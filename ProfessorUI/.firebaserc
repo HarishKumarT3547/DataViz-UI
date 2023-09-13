@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dataviz-test-f4868": {
+      "hosting": {
+        "ProfessorUI": [
+          "dataviz-test-f4868"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dataviz-test-f4868"
+  }
+}

@@ -19,6 +19,9 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 const materialModules = [
   MatCardModule,
@@ -44,7 +47,9 @@ const materialModules = [
     BrowserModule,
     HttpClientModule,
     NoopAnimationsModule,
-    materialModules
+    materialModules,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [],
   bootstrap: [AppComponent]
