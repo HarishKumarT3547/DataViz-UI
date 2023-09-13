@@ -1,0 +1,27 @@
+This projects contains 2 different projects:
+1. FileUploadServer Project is for running a local server which enables 2nd project (ProfessorUI) to upload, retrieve and download files.
+2. ProfessorUI Project is frontend UI which a user can use to upload, retrieve, and download files.
+
+To run project follow below mentioned steps:
+1.	Download or clone the repository.
+2.	First run FileUploadServer project:
+a.	Open vscode and go to file option in the top left corner.
+b.	Select “Open Folder…” option. Navigate to FileUploadServer and click on open.
+c.	Once the folder opens, open terminal by pressing “ctrl + shift + `” or clicking on the terminal which is present in top and then selecting “New Terminal option”.
+d.	Try typing following command and see if you are getting any result:
+i.	npm --version
+ii.	node --version
+e.	If you can’t see any result, then run following command otherwise skip this step completely:
+i.	Install npm from https://nodejs.org/en
+ii.	npm install nodemon --g
+f.	Now type following command in terminal to run the server:
+i.	nodemon .\server.js
+assuming nodemon is installed successfully
+ii.	Otherwise type following node .\server.js
+3.	Now open ProfessorUI in VS and procced with following steps:
+a.	Navigate to ProfessorUI folder. Inside folder double clock on ProfessorUI.sln which will give option to select Visual studio version try selecting latest version whichever is available.
+b.	Now go back to the folder and open command.
+c.	Type ng serve --port 8081
+d.	Either click on the link which says http://localhost:8081/ or open web browser and type the before mentioned localhost address and press enter.
+By taking above mentioned steps we can successfully run the project which is linked with each other.
+Happy Coding…😊😊😊☕☕☕📚📚📚
