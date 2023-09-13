@@ -9,7 +9,6 @@ import { FileUploadService } from './file-upload.service';
   styleUrls: ['./file-upload.component.css'],
 })
 export class FileUploadComponent implements OnInit {
-
   // Declaring variables
   currentFile?: File;
   progress = 0;
@@ -18,7 +17,7 @@ export class FileUploadComponent implements OnInit {
   fileName = 'Select File';
   fileInfos?: Observable<any>;
 
-  constructor(private fileUploadService: FileUploadService) { }
+  constructor(private fileUploadService: FileUploadService) {}
 
   // Getting file details and dividing into variables
   selectFile(event: any): void {
@@ -26,8 +25,7 @@ export class FileUploadComponent implements OnInit {
       const file: File = event.target.files[0];
       this.currentFile = file;
       this.fileName = this.currentFile.name;
-    }
-    else {
+    } else {
       this.fileName = 'Select File';
     }
   }
@@ -35,38 +33,42 @@ export class FileUploadComponent implements OnInit {
   // Uploading the file and calculating the progress
   upload(): void {
     this.progress = 0;
-    this.message = "";
+    this.message = '';
 
     if (this.currentFile) {
-      this.fileUploadService.upload(this.currentFile).subscribe(
-        (event: any) => {
-          if (event.type === HttpEventType.UploadProgress) {
-            this.progress = Math.round(100 * event.loaded / event.total);
-          }
-          else if (event instanceof HttpResponse) {
-            this.message = event.body.message;
-            this.fileInfos = this.fileUploadService.getFiles();
-          }
-        },
-        (err: any) => {
-          console.log(err);
-          this.progress = 0;
+      // pass file to fileUploadService (aka firebase storage link)
+      this.fileUploadService.upload(this.currentFile);
 
-          if (err.error && err.error.message) {
-            this.message = err.error.message;
-          }
-          else {
-            this.message = 'Could not upload the file!';
-          }
+      // TODO: potentially remove this block once we fully transition to the firebase way of uploading data
+      // .subscribe(
+      //   (event: any) => {
+      //     if (event.type === HttpEventType.UploadProgress) {
+      //       this.progress = Math.round(100 * event.loaded / event.total);
+      //     }
+      //     else if (event instanceof HttpResponse) {
+      //       this.message = event.body.message;
+      //       // this.fileInfos = this.fileUploadService.getFiles();
+      //     }
+      //   },
+      //   (err: any) => {
+      //     console.log(err);
+      //     this.progress = 0;
 
-          this.currentFile = undefined;
-        }
-      );
+      //     if (err.error && err.error.message) {
+      //       this.message = err.error.message;
+      //     }
+      //     else {
+      //       this.message = 'Could not upload the file!';
+      //     }
+
+      //     this.currentFile = undefined;
+      //   }
+      // );
     }
   }
 
   // Calling fileUploadService
   ngOnInit(): void {
-    this.fileInfos = this.fileUploadService.getFiles();
+    // this.fileInfos = this.fileUploadService.getFiles();
   }
 }
