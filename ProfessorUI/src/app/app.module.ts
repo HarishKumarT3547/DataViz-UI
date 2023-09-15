@@ -46,6 +46,12 @@ const routes: Routes = [
   { path: 'filedetails', component: FileDetailsComponent }
 ];
 
+const routes: Routes = [
+  { path: '', redirectTo: '/fileupload', pathMatch: 'full' },
+  { path: 'fileupload', component: FileUploadComponent },
+  { path: 'filedetails', component: FileDetailsComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
