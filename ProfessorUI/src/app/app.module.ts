@@ -24,6 +24,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FileDetailsComponent } from './file-details/file-details.component';
 <<<<<<< HEAD
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FileDetailsComponent } from './file-details/file-details.component';
 =======
 >>>>>>> c15ca4b (New page file details and nav bar)
 
