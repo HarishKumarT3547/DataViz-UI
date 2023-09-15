@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
@@ -19,6 +20,8 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FileDetailsComponent } from './file-details/file-details.component';
 
 const materialModules = [
   MatCardModule,
@@ -35,16 +38,25 @@ const materialModules = [
   MatPaginatorModule
 ];
 
+const routes: Routes = [
+  { path: '', redirectTo: '/fileupload', pathMatch: 'full' },
+  { path: 'fileupload', component: FileUploadComponent },
+  { path: 'filedetails', component: FileDetailsComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    NavBarComponent,
+    FileDetailsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     NoopAnimationsModule,
-    materialModules
+    materialModules,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent]
