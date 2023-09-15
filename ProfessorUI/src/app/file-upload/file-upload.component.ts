@@ -70,6 +70,6 @@ export class FileUploadComponent implements OnInit {
 
   // Calling fileUploadService
   ngOnInit(): void {
-    this.fileInfos = this.fileUploadService.getFiles();
+    //this.fileInfos = this.fileUploadService.getFiles();
   }
 }
