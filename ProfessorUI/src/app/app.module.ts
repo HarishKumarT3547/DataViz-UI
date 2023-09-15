@@ -19,6 +19,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const materialModules = [
   MatCardModule,
@@ -32,7 +33,8 @@ const materialModules = [
   MatTabsModule,
   MatGridListModule,
   MatDividerModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

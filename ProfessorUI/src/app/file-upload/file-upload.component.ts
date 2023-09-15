@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FileUploadService } from './file-upload.service';
+import { SnackbarService } from '../snackbar/snackbar.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -18,7 +19,7 @@ export class FileUploadComponent implements OnInit {
   fileName = 'Select File';
   fileInfos?: Observable<any>;
 
-  constructor(private fileUploadService: FileUploadService) { }
+  constructor(private fileUploadService: FileUploadService, private snackBarService: SnackbarService) { }
 
   // Getting file details and dividing into variables
   selectFile(event: any): void {
@@ -45,6 +46,7 @@ export class FileUploadComponent implements OnInit {
           }
           else if (event instanceof HttpResponse) {
             this.message = event.body.message;
+            this.snackBarService.showSnackbar(this.message)
             this.fileInfos = this.fileUploadService.getFiles();
           }
         },
@@ -59,6 +61,7 @@ export class FileUploadComponent implements OnInit {
             this.message = 'Could not upload the file!';
           }
 
+          this.snackBarService.showSnackbar(this.message)
           this.currentFile = undefined;
         }
       );
