@@ -22,7 +22,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FileDetailsComponent } from './file-details/file-details.component';
+<<<<<<< HEAD
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+=======
+>>>>>>> c15ca4b (New page file details and nav bar)
 
 const materialModules = [
   MatCardModule,
@@ -38,6 +41,12 @@ const materialModules = [
   MatDividerModule,
   MatPaginatorModule,
   MatSnackBarModule
+];
+
+const routes: Routes = [
+  { path: '', redirectTo: '/fileupload', pathMatch: 'full' },
+  { path: 'fileupload', component: FileUploadComponent },
+  { path: 'filedetails', component: FileDetailsComponent }
 ];
 
 const routes: Routes = [
